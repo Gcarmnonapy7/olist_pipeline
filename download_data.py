@@ -1,14 +1,13 @@
 import kagglehub 
-import os
+from pathlib import Path
 import shutil
-from numba import njit
 
-path = kagglehub.dataset_download("olistbr/brazilian-ecommerce")
-print("Path to dataset files:", path)
+def run_download_data():
+    path = Path(kagglehub.dataset_download("olistbr/brazilian-ecommerce"))
+    destiny = Path("data/raw")
+    destiny.mkdir(parents=True,exist_ok=True)
+   
+    for file in path.iterdir():
+        if file.is_file():
+            shutil.copy(file,destiny/file.name)
 
-# Path to move 
-DESTINY = "data/raw/"
-os.makedirs(DESTINY,exist_ok=True)
-
-for file in os.listdir(path):
-    shutil.copy()
