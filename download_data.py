@@ -3,6 +3,9 @@ from pathlib import Path
 import shutil
 
 def run_download_data():
+    """_summary_
+    
+    """
     path = Path(kagglehub.dataset_download("olistbr/brazilian-ecommerce"))
     destiny = Path("data/raw")
     destiny.mkdir(parents=True,exist_ok=True)
